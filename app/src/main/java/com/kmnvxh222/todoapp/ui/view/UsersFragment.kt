@@ -21,14 +21,12 @@ import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 
-class UsersFragment : DaggerFragment() {
+class UsersFragment : Fragment() {
 
     private var listUser: List<User> = ArrayList()
     private lateinit var binding: FragmentUsersBinding
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: UsersViewModel by viewModels { viewModelFactory }
+    private val viewModel: UsersViewModel by viewModels()
 
     private lateinit var adapter: UsersRecyclerAdapter
 
