@@ -1,5 +1,6 @@
 package com.kmnvxh222.todoapp.network
 
+import com.kmnvxh222.todoapp.db.model.TaskEntity
 import com.kmnvxh222.todoapp.model.Task
 import com.kmnvxh222.todoapp.model.User
 import dagger.Provides
@@ -12,5 +13,5 @@ interface ApiService {
     fun getUsers(): Deferred<List<User>>
 
     @GET("/todos")
-    fun getTodos(): Deferred<List<Task>>
+    fun getTodos(): Deferred<List<TaskEntity>>
 }

@@ -5,11 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.todoapp.R
+import com.kmnvxh222.todoapp.db.model.TaskEntity
 import com.kmnvxh222.todoapp.model.Task
 import com.kmnvxh222.todoapp.model.User
 import kotlinx.android.synthetic.main.item_task.view.*
 
-class TasksRecyclerAdapter(private var task: List<Task>, private var user: List<User>) :
+class TasksRecyclerAdapter(private var task: List<TaskEntity>, private var user: List<User>) :
     RecyclerView.Adapter<TasksRecyclerAdapter.TaskViewHolder>() {
 
 //    private lateinit var mItemClickListener: OnItemClickListener
@@ -32,7 +33,7 @@ class TasksRecyclerAdapter(private var task: List<Task>, private var user: List<
 //            itemView.setOnClickListener(this)
 //        }
 
-        fun bind(task: Task, userList: List<User>) {
+        fun bind(task: TaskEntity, userList: List<User>) {
             itemView.textViewId.text = task.id.toString()
             itemView.textViewStatus.text = when
                 (task.completed){
@@ -47,7 +48,7 @@ class TasksRecyclerAdapter(private var task: List<Task>, private var user: List<
 //        override fun onClick(v: View) = mItemClickListener.onItemClick(v, adapterPosition)
     }
 
-    fun updateList(list: List<Task>, userList: List<User>) {
+    fun updateList(list: List<TaskEntity>, userList: List<User>) {
         task = list
         user = userList
         notifyDataSetChanged()
