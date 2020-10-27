@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ToDoApp</string>
+
+    <string name="users_fragment">Users</string>
+    <string name="tasks_fragment">Tasks</string>
+    <string name="todo_app_splash">ToDo App</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="zipcode">Zipcode</string>
+    <string name="phone">Phone</string>
+    <string name="website">Website</string>
+    <string name="company">Company</string>
+</resources>
