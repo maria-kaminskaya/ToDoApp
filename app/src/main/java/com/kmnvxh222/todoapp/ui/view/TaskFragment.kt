@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kmnvxh222.todoapp.R
 import com.kmnvxh222.todoapp.databinding.FragmentTaskBinding
+import com.kmnvxh222.todoapp.db.model.TaskEntity
 import com.kmnvxh222.todoapp.model.Task
 import com.kmnvxh222.todoapp.model.User
 import com.kmnvxh222.todoapp.ui.adapters.TasksRecyclerAdapter
@@ -21,10 +22,10 @@ import com.kmnvxh222.todoapp.ui.viewmodel.TaskViewModel
 
 class TaskFragment : Fragment() {
 
-    private var listTask: List<Task> = ArrayList()
+    private var listTask: List<TaskEntity> = ArrayList()
     private var listUser: List<User> = ArrayList()
     private lateinit var binding: FragmentTaskBinding
-    private val viewModel: TaskViewModel by viewModels()
+    private lateinit var viewModel: TaskViewModel
     private lateinit var adapter: TasksRecyclerAdapter
 
     override fun onCreateView(
@@ -32,12 +33,14 @@ class TaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTaskBinding.inflate(inflater, container, false)
+        viewModel= TaskViewModel(requireContext())
         adapterInitialisation()
+
         return binding.root
     }
 
     private fun adapterInitialisation() {
-        val task = viewModel.getTask()
+        val task = viewModel.getTask(viewLifecycleOwner)
         val user = viewModel.getUsers()
         task.observe(viewLifecycleOwner, Observer { task ->
             if (task != null) {
